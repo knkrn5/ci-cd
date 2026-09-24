@@ -1,13 +1,12 @@
 set -e
 
-# git pull
-# npm i
-# npm test
-# npm build
+# node test.ts
 
-echo "pull backend changes"
-echo "install packages"
-echo "run tests"
-echo "then build"
+cd /home/karan/Desktop/aigalaxy/server
 
-pm2 restart aigalaxy
+source /home/karan/Desktop/ci-cd/.env
+
+# npm run test
+npm run build
+scp -r ./dist pcvm:/home/azureuser/aigalaxy/server
+ssh pcvm "/home/azureuser/.local/share/pnpm/bin/pm2 reload aidebate"

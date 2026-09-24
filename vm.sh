@@ -39,5 +39,5 @@
 
 # ===================================
 
-scp -r ./tests pcvm-admin:/home/admin/
-ssh pcvm-admin "/home/admin/.local/share/pnpm/bin/pm2 restart app"
+# scp -r ./tests pcvm-admin:/home/admin/
+# ssh pcvm-admin "/home/admin/.local/share/pnpm/bin/pm2 restart app"
