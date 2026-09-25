@@ -16,6 +16,7 @@ app.use(
     type: ["application/json", "application/x-www-form-urlencoded"],
   }),
 );
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Hello from Express!");
