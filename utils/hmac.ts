@@ -11,10 +11,7 @@ if (!WEBHOOK_SECRET) {
 export function createHmacSign(data: Buffer): string {
   return (
     "sha256=" +
-    crypto
-      .createHmac("sha256", WEBHOOK_SECRET!)
-      .update(data)
-      .digest("hex")
+    crypto.createHmac("sha256", WEBHOOK_SECRET!).update(data).digest("hex")
   );
 }
 
@@ -26,7 +23,9 @@ export function verifySign(
     return false;
   }
 
-  const expected = Buffer.from(createHmacSign(data), "utf8");
+  const expectedSign = createHmacSign(data);
+
+  const expected = Buffer.from(expectedSign, "utf8");
   const received = Buffer.from(signature, "utf8");
 
   if (expected.length !== received.length) {

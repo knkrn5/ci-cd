@@ -26,24 +26,24 @@ app.post("/gw", (req, res) => {
   /* const reqheaders = req.headers
   console.log("req headers", reqheaders) */
   console.log("body data of gw", req.body);
+  console.log("header data of gw", req.headers);
 
   if (!Buffer.isBuffer(req.body)) {
     return res.status(400).send("Request body is required");
   }
 
   const signature = req.headers["x-hub-signature-256"] as string;
-
-  if (signature) {
+  if (!signature) {
     return res.status(403).send("Invalid signature");
   }
 
   const isSignValid = verifySign(signature, req.body);
+  console.log("is sign valid", signature, isSignValid);
 
   if (!isSignValid) {
     return res.status(403).send("Webhook not valid");
   }
 
-  console.log("is sign valid", signature, isSignValid);
   res.status(202).send("Webhook accepted");
 
   const bcp = spawn("bash", ["f.sh"]);
