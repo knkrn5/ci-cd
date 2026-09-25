@@ -23,10 +23,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/gw", (req, res) => {
-  /* const reqheaders = req.headers
-  console.log("req headers", reqheaders) */
   console.log("body data of gw", req.body);
-  console.log("header data of gw", req.headers);
 
   if (!Buffer.isBuffer(req.body)) {
     return res.status(400).send("Request body is required");
