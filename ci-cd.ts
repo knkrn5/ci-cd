@@ -43,7 +43,7 @@ app.post("/gw", (req, res) => {
 
   res.status(202).send("Webhook accepted");
 
-  const bcp = spawn("bash", ["f.sh"]);
+  const bcp = spawn("bash", ["cli/t.sh"]);
 
   bcp.stdout.on("data", (data) => {
     process.stdout.write(`stdout: ${data}`);
