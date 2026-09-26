@@ -6,7 +6,8 @@ const cicdConfigs ={
         client: {
 
         }
-    }
+    },
+    
 }
 
 export default cicdConfigs
